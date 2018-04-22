@@ -94,7 +94,7 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/coderslab-WAR_FER_W_12_React-workshop/">
     <App/>
   </BrowserRouter>,
   document.getElementById('app')
