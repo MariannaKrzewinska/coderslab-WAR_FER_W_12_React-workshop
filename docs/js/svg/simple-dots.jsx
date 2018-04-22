@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import * as d3 from 'd3';
+
 export class SimpleDots extends Component {
   componentDidMount() {
     var svg = d3.select("svg"),
@@ -6,7 +9,7 @@ export class SimpleDots extends Component {
 
     var randomX = d3.randomNormal(width / 2, 80),
       randomY = d3.randomNormal(height / 2, 80),
-      data = d3.range(2000).map(function() { return [randomX(), randomY()]; });
+      data = d3.range(2000).map(() => [randomX(), randomY()]);
 
     var g = svg.append("g");
 
@@ -14,7 +17,7 @@ export class SimpleDots extends Component {
       .data(data)
       .enter().append("circle")
         .attr("r", 2.5)
-        .attr("transform", function(d) { return "translate(" + d + ")"; });
+        .attr("transform", (d) => "translate(" + d + ")");
 
     svg.append("rect")
       .attr("fill", "none")
@@ -23,14 +26,11 @@ export class SimpleDots extends Component {
       .attr("height", height)
       .call(d3.zoom()
         .scaleExtent([1, 8])
-        .on("zoom", zoom));
+        .on("zoom", () => g.attr("transform", d3.event.transform)));
 
-    function zoom() {
-      g.attr("transform", d3.event.transform);
-    }
   }
 
   render() {
-    return <svg></svg>
+    return <svg></svg>;
   }
 }
