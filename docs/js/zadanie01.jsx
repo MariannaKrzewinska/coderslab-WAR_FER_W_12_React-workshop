@@ -94,7 +94,7 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <HashRouter basename="/coderslab-WAR_FER_W_12_React-workshop">
+  <HashRouter>
     <App/>
   </HashRouter>,
   document.getElementById('app')
