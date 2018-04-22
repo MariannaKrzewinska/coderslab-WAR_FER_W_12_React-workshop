@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Link, BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Link, HashRouter, Route, Redirect } from 'react-router-dom';
 
 let savedToken;
 
@@ -94,9 +94,9 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <BrowserRouter basename="/coderslab-WAR_FER_W_12_React-workshop">
+  <HashRouter basename="/coderslab-WAR_FER_W_12_React-workshop">
     <App/>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('app')
 );
 
