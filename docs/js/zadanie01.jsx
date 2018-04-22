@@ -15,7 +15,7 @@ class App extends Component {
       </nav>
       <div>
         <Route exact path="/superheroes" component={Superheroes}/>
-        <Route exact path="/dost" component={SimpleDots}/>
+        <Route exact path="/dots" component={SimpleDots}/>
         <Route path="/superheroes/:id" component={Superhero}/>
       </div>
     </div>
