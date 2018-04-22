@@ -25,7 +25,7 @@ const getSuperheroes = () => {
     : Promise.resolve({ token: savedToken }))
     .then(({ token }) => {
 
-      fetch('https:\/\/mk-super-heroes.herokuapp.com/superheroes', {
+      return fetch('https:\/\/mk-super-heroes.herokuapp.com/superheroes', {
         headers: {
           Authorization: savedToken
         }
