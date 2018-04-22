@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../utils/api';
+import { Link } from 'react-router-dom';
 
 export class Superheroes extends Component {
   constructor() {
