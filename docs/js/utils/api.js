@@ -18,7 +18,7 @@ export const login = () => {
 export const getSuperheroes = () => {
   return (!savedToken
     ? login()
-    : Promise.resolve({ token: savedToken }))
+    : Promise.resolve())
     .then(() => {
 
       return fetch('https:\/\/mk-super-heroes.herokuapp.com/superheroes', {
