@@ -34,7 +34,7 @@ const getSuperheroes = () => {
     })
 }
 
-const getSuperhero = (id) {
+const getSuperhero = (id) => {
   return (!savedToken
     ? login()
     : Promise.resolve())
