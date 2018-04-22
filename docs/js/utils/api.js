@@ -38,6 +38,6 @@ export const getSuperhero = (id) => {
       headers: {
         Authorization: savedToken
       }
-    })
-      .then(data => data.json()))
+    }))
+      .then(data => data.json())
 }
