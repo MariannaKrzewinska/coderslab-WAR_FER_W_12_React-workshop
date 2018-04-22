@@ -31,6 +31,6 @@ export class SimpleDots extends Component {
   }
 
   render() {
-    return <svg></svg>;
+    return <svg with="960" height="500"></svg>;
   }
 }
