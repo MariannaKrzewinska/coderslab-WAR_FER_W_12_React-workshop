@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 export class SimpleDots extends Component {
   componentDidMount() {
-    var svg = d3.select("svg"),
+    var svg = d3.select("#svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
@@ -31,6 +31,6 @@ export class SimpleDots extends Component {
   }
 
   render() {
-    return <svg with="960" height="500"></svg>;
+    return <svg id="svg" width="960" height="500"></svg>;
   }
 }
