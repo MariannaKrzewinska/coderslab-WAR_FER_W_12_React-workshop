@@ -4,6 +4,48 @@ import { Link, HashRouter, Route, Redirect } from 'react-router-dom';
 
 let savedToken;
 
+const login = () => {
+  return fetch('https:\/\/mk-super-heroes.herokuapp.com/login', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({ email: 'some@email.com', password: 'Password1!' })
+  })
+    .then(resp => resp.json())
+    .then(({ token }) => {
+      savedToken = token;
+      return { token };
+    })
+}
+
+const getSuperheroes = () => {
+  return (!savedToken
+    ? login()
+    : Promise.resolve({ token: savedToken }))
+    .then(({ token }) => {
+
+      fetch('https:\/\/mk-super-heroes.herokuapp.com/superheroes', {
+        headers: {
+          Authorization: savedToken
+        }
+      })
+        .then(data => data.json())
+    })
+}
+
+const getSuperhero = (id) {
+  return (!savedToken
+    ? login()
+    : Promise.resolve())
+    .then(() => fetch(`https:\/\/mk-super-heroes.herokuapp.com/superheroes/${id}`, {
+      headers: {
+        Authorization: savedToken
+      }
+    })
+      .then(data => data.json()))
+}
+
 class Superheroes extends Component {
   constructor() {
     super();
@@ -11,29 +53,8 @@ class Superheroes extends Component {
   }
 
   componentDidMount() {
-    this.getSuperheroes()
-  }
-
-  getSuperheroes() {
-    fetch('https:\/\/mk-super-heroes.herokuapp.com/login', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({ email: 'some@email.com', password: 'Password1!' })
-    })
-      .then(resp => resp.json())
-      .then(({ token }) => {
-        savedToken = token;
-
-        fetch('https:\/\/mk-super-heroes.herokuapp.com/superheroes', {
-          headers: {
-            Authorization: savedToken
-          }
-        })
-          .then(data => data.json())
-          .then(data => this.setState({ superheroes: data }))
-      })
+    getSuperheroes()
+      .then(data => this.setState({ superheroes: data }));
   }
 
   render() {
@@ -58,12 +79,7 @@ class Superhero extends Component {
   }
 
   componentDidMount() {
-    fetch(`https:\/\/mk-super-heroes.herokuapp.com/superheroes/${this.props.match.params.id}`, {
-      headers: {
-        Authorization: savedToken
-      }
-    })
-      .then(data => data.json())
+    getSuperhero(this.props.match.params.id)
       .then(data => this.setState({ superhero: data }))
   }
 
