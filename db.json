@@ -1,0 +1,40 @@
+{
+  "cars": [
+    {
+      "id": 2,
+      "name": "Model S",
+      "brand": "Tesla",
+      "engine": {
+        "type": "electric",
+        "hp": 760
+      }
+    },
+    {
+      "id": 12,
+      "name": "Tico",
+      "brand": "Daewoo",
+      "engine": {
+        "type": "petrol",
+        "hp": 41
+      }
+    },
+    {
+      "id": 14,
+      "name": "Supra",
+      "brand": "Toyota",
+      "engine": {
+        "type": "petrol",
+        "hp": 276
+      }
+    },
+    {
+      "id": 15,
+      "name": "i8",
+      "brand": "BMW",
+      "engine": {
+        "type": "hybrid",
+        "hp": 362
+      }
+    }
+  ]
+}
